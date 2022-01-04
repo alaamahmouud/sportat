@@ -20,6 +20,11 @@ class Client extends Authenticatable
         'phone',
         );
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
     public function tokens()
     {
         return $this->hasMany('App\Models\Token');

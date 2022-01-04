@@ -40,6 +40,11 @@ Route::group(['namespace' => 'Api','prefix'=> 'v1' ],function ()
 
     Route::get('home','MainController@index');
     Route::post('addvedio','MainController@addvedio');
+    Route::get('getcomments','MainController@getcomments');
+    Route::post('comments','MainController@comments');
+    Route::get('getclientdata','MainController@getclientdata');
+
+
  
     });
 

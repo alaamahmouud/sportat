@@ -5,14 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Address;
-use App\Models\Advertisement;
-use App\Models\Certificate;
 use App\Models\Contact;
 use App\Models\Category;
-use App\Models\Detail;
 use App\Models\Vedio;
-use App\Models\Order;
-use App\Models\Service;
+use App\Models\Comment;
+use App\Models\Client;
 use App\MyHelper\Helper;
 use Illuminate\Http\Request;
 class MainController extends ParentApi
@@ -23,7 +20,6 @@ class MainController extends ParentApi
         $this->helper = new Helper();
 
     }
-
 
     public function index(Request $request)
     {
@@ -37,37 +33,69 @@ class MainController extends ParentApi
     [
       'vedios' => $vedios 
     ]);
+
     }
 
+    //create new comment
+    public function comments(Request $request)
+         {
+            $rules =
+                 [
+                  'content' => 'required',
+                  'client_id' => 'required',
+                  'vedio_id' => 'required',
+                 ];
+    
+            $data = validator()->make($request->all(), $rules);
+    
+             if ($data->fails()) {
+    
+                 return $this->helper->responseJson(0, $data->errors()->first());
+            }
+    
+            $record = Comment::create($request->all());
+            return $this->helper->responseJson(1,'done');   
+        }
 
-    //to add new vedio
-    public function addvedio(Request $request)
-    {
-        $rules =
-       [
-           'name' => 'required',
-           'des' => 'required',
-       ];
+       //to get all comments on vedio..
 
-       $data = validator()->make($request->all(), $rules);
+        public function getcomments(Request $request)
+        {
+            $comments = Comment::where('vedio_id', $request->vedio_id)->get();
+         
+            // return $this->helper->responseJson(1,'done', OrderResource::collection($orders));
+            return $this->helper->responseJson(1,'done', $comments);
+        }
 
-       if ($data->fails()) {
-           return $this->helper->responseJson(0, $data->errors()->first());
-       }
+        //to upload new vedio..
 
-       $vedio = Vedio::create([
-           'name' => $request->name,
-           'des' => $request->des,
-       ]);
+        public function addvedio(Request $request)
+        {
+            $vedio = Vedio::upload($request->file('vedio')->getPathName(), [
+                'title'       => $request->input('title'),
+                'des' => $request->input('des'),
+            ]);
+            
+            return $this->helper->responseJson(1,'done',
+                [
+                  'vedio' => $video->getVideoId()
+                ]);
+      
+            // return "Video uploaded successfully. Video ID is ". $video->getVideoId();
+        }
 
-       return $this->helper->responseJson(1,'done', $vedio);
-    }
+        //get client data
+        public function getclientdata(Request $request)
+        {
+            $clients = Client::where('client_id', $request->client_id)->get();
+         
+            // return $this->helper->responseJson(1,'done', OrderResource::collection($orders));
+            return $this->helper->responseJson(1,'done', $clients);
+        }
 
 
 
-
-
-    //////////////////////////////////////////////////
+////////////////////////////////////////////////////
 
 //         public function certificate()
 //         {
@@ -106,7 +134,6 @@ class MainController extends ParentApi
 //     }
 
 
-
 //     public function about()
 //     {
 //         $about = About::with('attachmentRelation')->latest()->get();
@@ -143,7 +170,6 @@ class MainController extends ParentApi
 //     {
 //         $record = Address::get();
 //         return $this->helper->responseJson(1,'done',$record);
-
 //     }
 
 
@@ -183,5 +209,47 @@ class MainController extends ParentApi
 
 // }
 //     }
+
+
+        // public function addvedio(Request $request)
+        // {
+        //     $rules =
+        //         [ 
+        //           'client_id' => 'required',
+        //           'file' => 'required|mimes:doc,docx,pdf,txt|max:2048',
+        //         ];
+
+        //     $data = validator()->make($request->all(), $rules);
+
+        //     if ($data->fails()) {    
+
+        //     //    if ($data->fails()) {
+        //     //        return $this->helper->responseJson(0, $data->errors()->first());
+        //     //    }
+
+        //     return $this->helper->responseJson(0, $data->errors()->first());                        
+        //      }  
+      
+        //     if ($files = $request->file('file')) {
+                 
+        //         //store file into document folder
+        //         $file = $request->file->store('public/documents');
+     
+        //         //store your file into database
+        //         $document = new Document();
+        //         $document->title = $file;
+        //         $document->client_id = $request->client_id;
+        //         $document->save();
+
+        //         return $this->helper->responseJson(1,'done',
+        //         [
+        //           'file' => $file 
+        //         ]);
+      
+        //     }
+        // }
+
+
+
 
 }

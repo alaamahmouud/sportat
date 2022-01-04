@@ -18,7 +18,7 @@ class CreateTokensTable extends Migration
             $table->string('token');
             $table->enum('os', array('android', 'ios'));
             $table->string('serial_number');
-            $table->integer('client_id');
+            $table->string('name');
             $table->timestamps();
         });
     }
