@@ -20,7 +20,8 @@ class Client extends Authenticatable
         'phone',
         'nationalty',
         'avatar',
-        'bio'
+        'bio',
+        'gender'
         );
 
     public function comments()

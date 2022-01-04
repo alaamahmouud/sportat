@@ -76,6 +76,7 @@ class MainController extends ParentApi
         }
 
         //profile
+
         public function getclientdata(Request $request)
         {
             $clients = Client::where('client_id', $request->client_id)->get();
@@ -125,10 +126,6 @@ class MainController extends ParentApi
 
             if ($data->fails()) {    
 
-            //    if ($data->fails()) {
-            //        return $this->helper->responseJson(0, $data->errors()->first());
-            //    }
-
             return $this->helper->responseJson(0, $data->errors()->first());                        
              }  
       
@@ -147,14 +144,13 @@ class MainController extends ParentApi
                     'client_id' => auth()->user()->id ,
                     'file' => $file ,
                     'des' => $request['des'],
-                    'category_id' => $request['category_id'],
+                    'category_id' => $request['category_id']
                 ]);
 
                 return $this->helper->responseJson(1,'done',
-                [
-                  'vedio' => $vedio
-                ]);
+                ['vedio' => $vedio ]);
       
+                }
             }
 
             public function search(Request $request) {

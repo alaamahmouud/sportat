@@ -18,7 +18,7 @@ class CreateClientsTable extends Migration {
 			$table->string('bio');
 			$table->string('avatar');
 			$table->string('nationalty');
-
+			$table->string('gender');
 		});
 
 
