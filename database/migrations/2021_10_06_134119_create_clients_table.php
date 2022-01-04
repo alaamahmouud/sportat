@@ -15,6 +15,10 @@ class CreateClientsTable extends Migration {
 			$table->string('email');
 			$table->string('password');
 			$table->string('phone');
+			$table->string('bio');
+			$table->string('avatar');
+			$table->string('nationalty');
+
 		});
 
 

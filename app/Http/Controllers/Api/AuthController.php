@@ -38,6 +38,10 @@ class AuthController extends ParentApi
             'phone' => 'required|unique:clients,phone',
             'email' => 'required|email|unique:clients,email',
             'password' => 'required|confirmed',
+            'bio' => 'required'
+            'nationalty' => 'required'
+            'gender' => 'required'
+            'avatar' => 'required'
             ];
 
         $data = validator()->make($request->all(), $rules);

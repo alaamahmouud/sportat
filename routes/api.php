@@ -32,38 +32,18 @@ Route::group(['namespace' => 'Api','prefix'=> 'v1' ],function ()
     Route::get('home-out-auth','MainController@index');
 
     Route::group(['middleware' => 'auth:api'],function () {
+        Route::post('change-password', 'AuthController@changePassword');
+        Route::post('logout', 'AuthController@logOut');
 
-    Route::get('client-profile', 'AuthController@showProfile');
-    Route::post('update-profile', 'AuthController@updateProfile');
-    Route::post('change-password', 'AuthController@changePassword');
-    Route::post('logout', 'AuthController@logOut');
-
-    Route::get('home','MainController@index');
-    Route::post('addvedio','MainController@addvedio');
-    Route::get('getcomments','MainController@getcomments');
-    Route::post('comments','MainController@comments');
-    Route::get('getclientdata','MainController@getclientdata');
-
-
- 
+        Route::get('home','MainController@index');
+        Route::post('addvedio','MainController@addvedio');
+        Route::get('getcomments','MainController@getcomments');
+        Route::post('comments','MainController@comments');
+        Route::get('getclientdata','MainController@getclientdata');
+        Route::post('profileedit','MainController@profileedit');
+        Route::post('search','MainController@esearch');
     });
 
 
     });
 
-
-    // Route::get('certificate','MainController@certificate');
-    // Route::post('is_certificate','MainController@is_certificate');
-
-    // Route::post('serviceDetails','MainController@serviceDetails');
-
-
-    // Route::post('order','MainController@order');
-    // Route::get('about','MainController@about');
-
-    // Route::get('notifications','MainController@notifications');
-    // Route::post('read-notification','MainController@readNotification');
-    // Route::post('delete-notification','MainController@deleteNotification');
-
-    // Route::post('contact','MainController@contacts');
-    // Route::get('addresses','MainController@addresses');
