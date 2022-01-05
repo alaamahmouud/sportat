@@ -12,7 +12,7 @@ class Vedio extends Model
     
     protected $table = 'vedios';
     public $timestamps = true;
-    protected $fillable = array('name' ,'slug' , 'duration' ,'des' , 'tag');
+    protected $fillable = array('name' ,'slug' , 'duration' ,'des' ,'client_id');
 
     public function category()
     {
@@ -22,6 +22,11 @@ class Vedio extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function client()
+    {
+       return $this->belongsTo(Client::class);
     }
     
     public function __construct(array $attributes = [])

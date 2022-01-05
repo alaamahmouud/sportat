@@ -18,7 +18,8 @@ class CreateVediosTable extends Migration
             $table->string('name');
             $table->string('slug link');
             $table->string('duration');
-            $table->string('des');           
+            $table->string('des');    
+            $table->integer('client_id');
             $table->timestamps();
         });
     }

@@ -70,20 +70,20 @@
                 </a>
             </li> -->
 
-
-{{--            <li>--}}
-{{--                <a href="{{url('admin/categories')}}">--}}
-{{--                    <i class="fa fa-home"></i>--}}
-{{--                    <span class="nav-label">الاقسام</span>--}}
-{{--                </a>--}}
-{{--            </li>--}}
-            <!-- <li>
-                <a href="{{url('admin/services')}}">
+            <li>
+                <a href="{{url('admin/categories')}}">
                     <i class="fa fa-home"></i>
-                    <span class="nav-label"> الخدمات</span>
+                    <span class="nav-label">الاقسام</span>
                 </a>
-            </li> -->
+            </li>
 
+            <li>
+                <a href="{{url('admin/vedios')}}">
+                    <i class="fa fa-home"></i>
+                    <span class="nav-label">vedios</span>
+                </a>
+            </li>
+      
             <!-- <li>
                 <a href="{{url('admin/details')}}">
                     <i class="fa fa-home"></i>
@@ -113,19 +113,12 @@
                 </a>
             </li> -->
 
-
             <!-- <li>
                 <a href="{{url('admin/notifications')}}">
                     <i class="fa fa-bell" aria-hidden="true"></i>
                     <span class="nav-label">الإشعارات</span>
                 </a>
             </li> -->
-
-
-
-
-
-
 
         </ul>
     </div>

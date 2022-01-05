@@ -41,7 +41,7 @@ Route::group(['namespace' => 'Api','prefix'=> 'v1' ],function ()
         Route::post('comments','MainController@comments');
         Route::get('getclientdata','MainController@getclientdata');
         Route::post('profileedit','MainController@profileedit');
-        Route::post('search','MainController@esearch');
+        Route::post('search','MainController@search');
     });
 
 

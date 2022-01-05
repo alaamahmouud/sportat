@@ -38,7 +38,7 @@ class MainController extends ParentApi
 
     }
 
-    //create new comment
+    //create new comment..
 
     public function comments(Request $request)
          {
@@ -65,7 +65,7 @@ class MainController extends ParentApi
             return $this->helper->responseJson(1,'done');   
         }
 
-       //to git all comments on vedio..
+       //to get all comments on vedio..
 
         public function getcomments(Request $request)
         {
@@ -75,22 +75,21 @@ class MainController extends ParentApi
             return $this->helper->responseJson(1,'done', $comments);
         }
 
-        //profile
+        // profile..
 
         public function getclientdata(Request $request)
         {
             $clients = Client::where('client_id', $request->client_id)->get();
             $vedios = Vedio::where('client_id', $request->client_id)->get();
 
-            // return $this->helper->responseJson(1,'done', OrderResource::collection($orders));
             return $this->helper->responseJson(1,'done',  [
-                'clients' => $clients
+                'clients' => $clients,
                 'vedios' => $vedios
             ]);
     
         }
 
-        //edit profile
+        //edit profile..
 
         public function profileedit($id, ProfileRequest $request){
             $users = Client::find($id);
@@ -159,12 +158,11 @@ class MainController extends ParentApi
         
                 $search = Vedio::where('name', 'like', "%{$data}%")->get();
         
-                return Response::json([
-                    'data' => $search
-                ]);     
+                return $this->helper->responseJson(1,'done',
+                ['data' => $search ]);
+          
             }
-        }
-
+       
 
 
 }

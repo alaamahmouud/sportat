@@ -21,12 +21,19 @@ class Client extends Authenticatable
         'nationalty',
         'avatar',
         'bio',
-        'gender'
+        'gender' ,
+        'comment_id' ,
+        'vedio_id'
         );
 
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function vedios()
+    {
+        return $this->hasMany(Vedio::class);
     }
 
     public function tokens()

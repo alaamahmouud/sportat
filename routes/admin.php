@@ -51,6 +51,8 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::resource('categories', 'CategoryController');
     Route::get('category/toggle-boolean/{id}/{action}', 'CategoryController@toggleBoolean')->name('category.toggleBoolean');
 
+    Route::resource('vedios', 'VedioController');
+    Route::get('vedio/toggle-boolean/{id}/{action}', 'VedioController@toggleBoolean')->name('vedio.toggleBoolean');
 
     Route::resource('advertisements','AdvertisementController');
     Route::get('advertisements/toggle-boolean/{id}/{action}', 'AdvertisementController@toggleBoolean')->name('advertisements.toggleBoolean');
