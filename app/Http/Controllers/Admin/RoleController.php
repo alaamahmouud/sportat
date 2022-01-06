@@ -21,6 +21,7 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
         $roles = Role::where(function ($q) use ($request) {
@@ -40,7 +41,6 @@ class RoleController extends Controller
             }
 
 
-
         })->latest()->paginate(20);
 
         return view('admin.roles.index', compact('roles'));
@@ -51,7 +51,9 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function create() 
+
     {
         Artisan::call('permission:cache-reset');
         $model = new Role();
@@ -65,24 +67,24 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $rules=
             [
                 'name'=>'required|unique:roles',
-//                'display_name'=>'required',
-//            'description'=>'required',
-            'permissions'=>'required',
-
-        ];
+//              'display_name'=>'required',
+//              'description'=>'required',
+                'permissions'=>'required',
+            ];
 
         $message=
             [
                 'name.required'=>'الرجاء ادخال الاسم',
-                'name.unique'=>'تم ادخال هذه الصلاحية من قبل',
-                'display_name.required'=>'الرجاء ادخال الاسم المعروض',
-                'description.required'=>'الرجاء ادخال الوصف',
-                'permissions.required'=>'الرجاء ادخال الوصف'
+                // 'name.unique'=>'تم ادخال هذه الصلاحية من قبل',
+                // 'display_name.required'=>'الرجاء ادخال الاسم المعروض',
+                // 'description.required'=>'الرجاء ادخال الوصف',
+                'permissions.required'=>'تم ادخال هذه الصلاحية من قبل'
 
             ];
 
@@ -105,6 +107,7 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function show($id)
     {
         //
@@ -116,8 +119,10 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function edit($id)
     {
+
 //        if($id == 1)
 //        {
 //            flash()->success(__('لا يمكن تعديل هذه الصلاحية'));
@@ -138,6 +143,7 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $id)
     {
         if($id == 1)
@@ -147,19 +153,18 @@ class RoleController extends Controller
 
         $rules=
             [
-                'name'=>'required|unique:roles,name,'.$record->id.'',
-//                'display_name'=>'required',
+              'name'=>'required|unique:roles,name,'.$record->id.'',
+//            'display_name'=>'required',
 //            'description'=>'required',
-            'permissions'=>'required',
-
-        ];
+            //   'permissions'=>'required',
+            ];
 
         $message=
             [
                 'name.required'=>'الرجاء ادخال الاسم',
-                'name.unique'=>'تم اخال هذه الصلاحية من قبل',
-                'display_name.required'=>'الرجاء اخال الاسم المعروض',
-                'description.required'=>'الرجاء اخال الوصف'
+                // 'permissions'=>'تم اخال هذه الصلاحية من قبل',
+                // 'display_name.required'=>'الرجاء اخال الاسم المعروض',
+                // 'description.required'=>'الرجاء اخال الوصف'
 
             ];
         $data = validator()->make($request->all(),$rules,$message);
@@ -182,9 +187,9 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function destroy($id)
     {
-
 
         $record = Role::findOrFail($id);
 

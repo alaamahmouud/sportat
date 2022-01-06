@@ -1,24 +1,24 @@
+
 @extends('admin.layouts.main',[
-                                'page_header'       => 'about',
-                                'page_description'  => ' تعديل   ',
-                                'link' => url('admin/about')
+                                'page_header'       => 'roles',
+                                'page_description'  => ' تعديل ',
+                                'link' => url('admin/roles')
                                 ])
 @section('content')
         <!-- general form elements -->
 <div class="box box-primary">
     <!-- form start -->
     {!! Form::model($model,[
-                            'url'=>url('admin/about-us/'.$model->id),
+                            'url'=>url('admin/roles/'.$model->id),
                             'id'=>'myForm',
                             'role'=>'form',
                             'method'=>'PUT',
                             'files' => true
                             ])!!}
-
     <div class="box-body">
         <div class="clearfix"></div>
         <br>
-        @include('admin.about-us.form')
+        @include('admin.roles.form')
 
         <div class="box-footer">
             <button type="submit" class="btn btn-primary">حفظ</button>

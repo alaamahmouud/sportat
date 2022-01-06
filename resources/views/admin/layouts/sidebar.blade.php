@@ -76,6 +76,20 @@
                     <span class="nav-label">الاقسام</span>
                 </a>
             </li>
+            
+            <li>
+                <a href="{{url('admin/about-us')}}">
+                    <i class="fa fa-home"></i>
+                    <span class="nav-label">من نحن</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="{{url('admin/contacts')}}">
+                    <i class="fa fa-home"></i>
+                    <span class="nav-label"> تواصل معنا</span>
+                </a>
+            </li>
 
             <li>
                 <a href="{{url('admin/vedios')}}">
@@ -83,26 +97,18 @@
                     <span class="nav-label">vedios</span>
                 </a>
             </li>
-      
-            <!-- <li>
-                <a href="{{url('admin/details')}}">
-                    <i class="fa fa-home"></i>
-                    <span class="nav-label"> تفاصيل الخدمات</span>
-                </a>
-            </li> -->
 
+             <li>
+                <a href="{{url('admin/roles')}}">
+                    <i class="fa fa-home"></i>
+                    <span class="nav-label">الصلاحيات</span>
+                </a>
+            </li> 
 
             <!-- <li>
                 <a href="{{url('admin/clients')}}">
                     <i class="fa fa-home"></i>
                     <span class="nav-label">العملاء</span>
-                </a>
-            </li> -->
-
-            <!-- <li>
-                <a href="{{url('admin/about-us')}}">
-                    <i class="fa fa-home"></i>
-                    <span class="nav-label">من نحن</span>
                 </a>
             </li> -->
             

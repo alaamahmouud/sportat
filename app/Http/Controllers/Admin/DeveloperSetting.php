@@ -19,11 +19,13 @@ class DeveloperSetting extends Controller
     {
         $this->model = new Setting();
     }
+
     /**
      * @param $view
      * @param array $params
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
     private function view($view, $params = [])
     {
         return view($this->viewsDomain . $view, $params);
@@ -34,6 +36,7 @@ class DeveloperSetting extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $records = Setting::latest()->paginate(20);
@@ -46,6 +49,7 @@ class DeveloperSetting extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function create()
     {
         $model = $this->model;

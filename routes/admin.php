@@ -22,10 +22,8 @@ Route::group(['middleware' => ['auth:admin']], function () {
 
     Route::resource('photo', 'PhotoController');
 
-
     Route::resource('cities', 'CityController');
     Route::get('city/toggle-boolean/{id}/{action}', 'CityController@toggleBoolean')->name('city.toggleBoolean');
-
 
     Route::get('settings', 'SettingController@view');
     Route::post('settings', 'SettingController@update');
@@ -37,13 +35,7 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('users/toggle-boolean/{id}/{action}', 'UserController@toggleBoolean')->name('facilities.users.toggleBoolean');
     Route::resource('roles', 'RoleController');
 
-    /// order
-//    Route::resource('orders', 'OrderController');
-//    Route::post('cancel-order/{id}', 'OrderController@requestCancel');
-//    Route::post('accept-order/{id}','OrderController@acceptOrder');
 
-    ////
-    ///
     /// client area
     Route::resource('clients', 'ClientController');
 
@@ -58,14 +50,12 @@ Route::group(['middleware' => ['auth:admin']], function () {
     Route::get('advertisements/toggle-boolean/{id}/{action}', 'AdvertisementController@toggleBoolean')->name('advertisements.toggleBoolean');
 
 
-
     Route::get('certificates','CertificateController@index');
     Route::get('certificates/{id}','CertificateController@update')->name('certificates.update');
     Route::put('certificates/{id}','CertificateController@edit');
 
-    Route::resource('services','ServiceController');
-    Route::resource('details','DetailsController');
     Route::resource('about-us','AboutUsController');
+    Route::resource('contacts','ContactController');
 
     Route::resource('notifications', 'NotificationController');
 

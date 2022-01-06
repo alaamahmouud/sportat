@@ -49,8 +49,6 @@ class VedioController extends Controller
         return $this->view('index', compact('records'));
     }
 
-    /////
-
     /**
      * Show the form for creating a new resource.
      *
@@ -73,6 +71,7 @@ class VedioController extends Controller
      */
 
     public function store(Request $request)
+
     {
 
 

@@ -51,13 +51,13 @@ class DetailsController extends Controller
 
         })->latest()->paginate(6);
         return $this->view('index',compact('records'));
-    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         //
@@ -191,9 +191,5 @@ class DetailsController extends Controller
         ];
         return Response::json($data, 200);
     }
-
-
-
-
 
 }
