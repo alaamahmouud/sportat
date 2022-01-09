@@ -29,7 +29,7 @@ Route::group(['namespace' => 'Api','prefix'=> 'v1' ],function ()
 
     Route::post('new-password','AuthController@newPassword');
     Route::post('reset-password','AuthController@resetpassword') ;
-    Route::get('home-out-auth','MainController@index');
+    // Route::get('home-out-auth','MainController@index');
 
     Route::group(['middleware' => 'auth:api'],function () {
         Route::post('change-password', 'AuthController@changePassword');
