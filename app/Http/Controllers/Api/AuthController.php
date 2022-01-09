@@ -45,6 +45,8 @@ class AuthController extends ParentApi
 
             ];
 
+           
+
         $data = validator()->make($request->all(), $rules);
 
         if ($data->fails()) {
@@ -52,6 +54,16 @@ class AuthController extends ParentApi
             return $this->helper->responseJson(0, $data->errors()->first());
         }
         $request->merge(['password'=>bcrypt($request->password)]);
+
+        // $request = request();
+
+        // $profileImage = $request->file('profile_picture');
+        // $profileImageSaveAsName = time() . Auth::id() . "-profile." . $profileImage->getClientOriginalExtension();
+   
+        // $upload_path = 'profile_images/';
+        // $profile_image_url = $upload_path . $profileImageSaveAsName;
+        // $success = $profileImage->move($upload_path, $profileImageSaveAsName);
+
         $record = $this->model->create($request->all());
 
         $token = $record->createToken('android')->accessToken;
