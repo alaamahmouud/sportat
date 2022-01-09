@@ -14,7 +14,6 @@ use App\Http\Controllers\Controller;
 use Response;
 
 class RoleController extends Controller
-
 {
     /**
      * Display a listing of the resource.
@@ -53,11 +52,11 @@ class RoleController extends Controller
      */
 
     public function create() 
-
     {
         Artisan::call('permission:cache-reset');
         $model = new Role();
         $permissions = Permission::select('group')->groupBy('group')->get();
+
         return view('admin.roles.create', compact('model', 'permissions'));
     }
 
@@ -87,7 +86,7 @@ class RoleController extends Controller
                 'permissions.required'=>'تم ادخال هذه الصلاحية من قبل'
 
             ];
-
+        
         $data = validator()->make($request->all(),$rules , $message);
         if($data->fails())
         {
@@ -95,8 +94,9 @@ class RoleController extends Controller
         }
 
         $record = Role::create(request()->except('permissions','sellectAll'));
+        
         $record->permissions()->attach($request->permissions);
-
+        
         session()->flash('success', 'تمت الاضافة بنجاح');
         return redirect('admin/roles');
     }

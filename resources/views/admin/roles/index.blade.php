@@ -42,7 +42,7 @@
         </div>
 
         <div class="ibox-content">
-            @if(!empty($records) && count($records)>0)
+            @if(!empty($roles) && count($roles)>0)
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
@@ -53,9 +53,9 @@
                         <th class="text-center">حذف</th>
                         </thead>
                         <tbody>
-                        @foreach($records as $record)
+                        @foreach($roles as $record)
                             <tr id="removable{{$record->id}}">
-                                <td>{{($records->perPage() * ($records->currentPage() - 1)) + $loop->iteration}}</td>
+                                <td>{{($roles->perPage() * ($roles->currentPage() - 1)) + $loop->iteration}}</td>
                                 <td>{{optional($record)->name}}</td>
                                 <!-- <td class="text-center">
                                     {!! \App\MyHelper\Helper::toggleBooleanView($record , url('admin/category/toggle-boolean/'.$record->id.'/is_active'),'is_active') !!}
@@ -76,7 +76,7 @@
                         </tbody>
                     </table>
                 </div>
-                {!! $records->appends(request()->all())->render() !!}
+                {!! $roles->appends(request()->all())->render() !!}
             @else
                 <div>
                     <h3 class="text-info" style="text-align: center"> لا توجد بيانات للعرض </h3>
