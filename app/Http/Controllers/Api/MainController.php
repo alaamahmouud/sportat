@@ -111,7 +111,6 @@ class MainController extends ParentApi
 
          //to upload new vedio..
 
-
          public function addvedio(Request $request)
            {
              $rules =
@@ -130,10 +129,25 @@ class MainController extends ParentApi
       
             if ($files = $request->file('file')) {
                  
-                //store file into document folder
+                /////////////////////////
+                // $fileModel = new File;
+
+                // if($req->file()) {
+                    // $fileName = time().'_'.$req->file->getClientOriginalName();
+                    // $filePath = $req->file('file')->storeAs('uploads', $fileName, 'public');
+        
+                    // $fileModel->name = time().'_'.$req->file->getClientOriginalName();
+                    // $fileModel->file_path = '/storage/' . $filePath;
+                    // $fileModel->save();
+
+                //////////////////////
+
+                // store file into document folder
+
                 $file = $request->file->store('public/documents');
      
-                //store your file into database
+                // store your file into database
+
                 $document = new Document();
                 $document->title = $file;
                 $document->client_id =auth()->id();
@@ -162,7 +176,6 @@ class MainController extends ParentApi
                 ['data' => $search ]);
           
             }
-       
 
 
 }
